@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class NumberWizardConsole : MonoBehaviour
 {
@@ -16,27 +17,26 @@ public class NumberWizardConsole : MonoBehaviour
 
     void StartGame()
     {
-        guess = (max + min) / 2;
-
-        guessText.text = guess.ToString();
-        max = max + 1;
+        NextGuess();
     }
 
     void NextGuess()
     {
-        guess = (max + min) / 2;
+        guess = Random.Range(min, max + 1);
         guessText.text = guess.ToString();
     }
 
     public void OnPressHigher()
     {
         min = guess;
+        min++;
         NextGuess();
     }
 
     public void OnPressLower()
     {
         max = guess;
+        max--;
         NextGuess();
     }
 }
